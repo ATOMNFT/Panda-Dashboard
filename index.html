@@ -133,6 +133,30 @@
     .card a:hover {
       background: rgba(139, 92, 246, 0.2);
     }
+	.share-buttons {
+	  margin-top: 0.75rem;
+	  display: flex;
+	  gap: 0.5rem;
+	  justify-content: center;
+	  font-size: 1.25rem;
+	}
+
+	.share-buttons a,
+	.share-buttons button {
+	  background: rgba(255, 255, 255, 0.05);
+	  border: 1px solid rgba(255, 255, 255, 0.1);
+	  padding: 0.4rem 0.6rem;
+	  border-radius: 0.5rem;
+	  color: #33ff9d;
+	  text-decoration: none;
+	  cursor: pointer;
+	  transition: background 0.2s ease;
+	}
+
+	.share-buttons a:hover,
+	.share-buttons button:hover {
+	  background: rgba(139, 92, 246, 0.2);
+	}
     .hidden { display: none; }
     footer {
       position: fixed;
@@ -224,23 +248,35 @@
       }
     }
 
-    async function loadCards() {
-      const grid = document.getElementById("cards");
-      for (const r of repos) {
-        const manifest = await fetchManifest(r.repo);
-        const versionTag = manifest && manifest.version ? `<small>v${manifest.version}</small>` : "";
-        grid.innerHTML += `
-          <div class="card" data-device="${r.device}">
-            <img src="${r.image}" alt="${r.device} Icon">
-            <h2>${r.name}</h2>
-            <p>${r.desc}</p>
-            <a href="${r.flash}" target="_blank">${r.device === 'tools' ? 'Open Tool' : 'Flash Now'}</a>
-            <a href="https://github.com/ATOMNFT/${r.repo}" target="_blank">View Repo</a>
-            ${versionTag}
-          </div>`;
-      }
-    }
+	async function loadCards() {
+	  const grid = document.getElementById("cards");
+	  for (const r of repos) {
+		const manifest = await fetchManifest(r.repo);
+		const versionTag = manifest && manifest.version ? `<small>v${manifest.version}</small>` : "";
+		const tweetURL = `https://twitter.com/intent/tweet?text=Check%20out%20this%20Panda%20tool%3A%20${encodeURIComponent(r.name)}%20🐼%0A${encodeURIComponent(r.flash)}`;
+
+		grid.innerHTML += `
+		  <div class="card" data-device="${r.device}">
+			<img src="${r.image}" alt="${r.device} Icon">
+			<h2>${r.name}</h2>
+			<p>${r.desc}</p>
+			<a href="${r.flash}" target="_blank">${r.device === 'tools' ? 'Open Tool' : 'Flash Now'}</a>
+			<a href="https://github.com/ATOMNFT/${r.repo}" target="_blank">View Repo</a>
+			${versionTag}
+			<div class="share-buttons">
+			  <a href="${tweetURL}" target="_blank" title="Share on Twitter">🐦</a>
+			  <button onclick="copyToClipboard('${r.flash}')" title="Copy Link to Clipboard">📋</button>
+			</div>
+		  </div>`;
+	  }
+	}
     loadCards();
+	
+	function copyToClipboard(link) {
+	  navigator.clipboard.writeText(link).then(() => {
+		alert("🔗 Link copied to clipboard!");
+	  });
+	}
 
     document.getElementById('deviceFilter').addEventListener('change', function () {
       const value = this.value;
