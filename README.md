@@ -11,7 +11,8 @@ Welcome to the **PandaMania Dashboard** — your central hub for all tools, util
 ## 🌐 Live Site
 
 👉 Visit the dashboard:  
-**[PandaMania Dashboard](https://atomnft.github.io/PandaMania-Dashboard)**
+[![](https://github.com/ATOMNFT/Panda-Dashboard/blob/main/Images/button.png)](https://atomnft.github.io/PandaMania-Dashboard)
+
 
 ---
 
