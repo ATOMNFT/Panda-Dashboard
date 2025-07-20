@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panda Dashboard</title>
+  <!-- Placeholder for your custom banner image -->
+  <img src="Images/mainheader.png" alt="Panda Tools Dashboard Banner" style="display: block; margin: 1.5rem auto 2rem; max-width: 30%; border-radius: 1rem;">
+  <style>
+    body {
+      background: url('Images/bg.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: sans-serif;
+      color: #e2e8f0;
+      padding: 2rem;
+      min-height: 100vh;
+    }
+    h1 {
+      text-align: center;
+      background: linear-gradient(90deg, #8b5cf6, #ec4899);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+	h2 {
+      text-align: center;
+      background: linear-gradient(90deg, #23ad74, #2bf09e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      font-size: 2.0rem;
+      margin-bottom: 1rem;
+     -webkit-text-stroke: 1px black;
+	  text-shadow: 0 0 10px rgba(0, 255, 100, 0.3), 0 0 20px rgba(0, 255, 100, 0.4);
+    }
+    select {
+      display: block;
+      margin: 0 auto 2rem;
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(139, 92, 246, 0.5);
+      background: rgba(67, 56, 202, 0.4);
+      color: #e2e8f0;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 8px rgba(139, 92, 246, 0.4);
+      transition: all 0.3s ease;
+    }
+    select:focus {
+      outline: none;
+      box-shadow: 0 0 12px rgba(139, 92, 246, 0.6);
+      border-color: rgba(139, 92, 246, 0.8);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+	#leaves-container {
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	  width: 100%;
+	  height: 100%;
+	  pointer-events: none;
+	  z-index: 0;
+	  overflow: hidden;
+	}
+
+	.leaf {
+	  position: absolute;
+	  width: 32px;
+	  opacity: 0;
+	  animation-name: fall;
+	  animation-timing-function: linear;
+	  animation-fill-mode: forwards;
+	  animation-iteration-count: 1;
+	  pointer-events: none;
+	}
+
+	@keyframes fall {
+	  0% {
+		transform: translateY(-150px) rotate(0deg);
+		opacity: 0;
+	  }
+	  5% {
+		opacity: 0.4;
+	  }
+	  100% {
+		transform: translateY(110vh) rotate(360deg);
+		opacity: 0.7;
+	  }
+	}
+    .card {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      padding: 1.5rem;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 10px rgba(72, 211, 173, 0.20);
+    }
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow:
+        0 0 20px rgba(72, 211, 173, 0.5),
+        0 0 40px rgba(72, 211, 173, 0.2);
+    }
+    .card h2 {
+      margin-top: 0;
+      color: #fff;
+      font-size: 1.25rem;
+    }
+    .card p {
+      color: #94a3b8;
+      font-size: 0.9375rem;
+    }
+    .card a {
+      display: inline-block;
+      margin-top: 1rem;
+      color: #33ff9d;
+      text-decoration: none;
+      font-weight: bold;
+      background: rgba(139, 92, 246, 0.1);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      transition: background 0.2s ease;
+    }
+    .card a:hover {
+      background: rgba(139, 92, 246, 0.2);
+    }
+    .hidden { display: none; }
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      padding: 0.75rem 1rem;
+      font-size: 0.95rem;
+      color: #94a3b8;
+      background: rgba(15, 23, 42, 0.6);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      box-shadow: 0 0 8px rgba(72, 211, 173, 0.2);
+    }
+    footer a {
+      color: #47d3ad;
+      text-decoration: none;
+      font-weight: bold;
+      text-shadow: 0 0 5px rgba(72, 211, 173, 0.7);
+    }
+    footer a:hover {
+      color: #4fffd5;
+      text-shadow: 0 0 10px rgba(72, 211, 173, 0.9);
+    }
+    .card img {
+      width: 64px;
+      display: block;
+      margin: 0 auto 1rem;
+    }
+    .card small {
+      display: block;
+      margin-top: 0.5rem;
+      color: #7dd3fc;
+      font-size: 0.8rem;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div id="leaves-container"></div>
+
+  <h2>Tools For The PandaMania Community</h2>
+  <select id="deviceFilter">
+    <option value="all">All</option>
+    <option value="tools">Tools</option>
+    <option value="devices">Devices</option>
+  </select>
+
+  <div class="grid" id="cards"></div>
+
+  <script>
+    const repos = [
+      {
+        name: "Panda Portal",
+        device: "tools",
+        repo: "Panda-Portal",
+        image: "Icons/tools.png", // Add your custom icon for this repo
+        desc: "A portal for Panda-related NFT & Token info.",
+        flash: "https://github.com/ATOMNFT/Panda-Portal"
+      },
+      {
+        name: "Panda Raid Badge Generator",
+        device: "tools",
+        repo: "Panda-Raid-Badge-Generator",
+        image: "Icons/tools.png", // Add your custom icon for this repo
+        desc: "Generate badges for the Panda Raid events.",
+        flash: "https://github.com/ATOMNFT/Panda-Raid-Badge-Generator"
+      },
+      {
+        name: "Panda Token Ticker",
+        device: "devices",
+        repo: "Panda-Token-Ticker",
+        image: "Icons/devices.png", // Add your custom icon for this repo
+        desc: "Live $PANDA token price displayed via ESP32.",
+        flash: "https://github.com/ATOMNFT/Panda-Token-Ticker"
+      }
+    ];
+
+    async function fetchManifest(repo) {
+      const url = `https://raw.githubusercontent.com/ATOMNFT/${repo}/main/manifest.json`;
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error("Not found");
+        return await res.json();
+      } catch {
+        return null;
+      }
+    }
+
+    async function loadCards() {
+      const grid = document.getElementById("cards");
+      for (const r of repos) {
+        const manifest = await fetchManifest(r.repo);
+        const versionTag = manifest && manifest.version ? `<small>v${manifest.version}</small>` : "";
+        grid.innerHTML += `
+          <div class="card" data-device="${r.device}">
+            <img src="${r.image}" alt="${r.device} Icon">
+            <h2>${r.name}</h2>
+            <p>${r.desc}</p>
+            <a href="${r.flash}" target="_blank">${r.device === 'tools' ? 'Open Tool' : 'Flash Now'}</a>
+            <a href="https://github.com/ATOMNFT/${r.repo}" target="_blank">View Repo</a>
+            ${versionTag}
+          </div>`;
+      }
+    }
+    loadCards();
+
+    document.getElementById('deviceFilter').addEventListener('change', function () {
+      const value = this.value;
+      document.querySelectorAll('.card').forEach(card => {
+        card.classList.toggle('hidden', value !== 'all' && card.dataset.device !== value);
+      });
+    });
+  </script>
+
+  <footer>
+    Made with lots of ☕ & ❤️ by
+    <a href="https://github.com/ATOMNFT" target="_blank">ATOMNFT</a>
+  </footer>
+  
+  <script>
+	function spawnLeaf() {
+	  const leaf = document.createElement("img");
+	  leaf.src = "Images/leaf.png"; // <-- replace with your actual path
+	  leaf.className = "leaf";
+
+	  const size = 24 + Math.random() * 24;
+	  leaf.style.width = `${size}px`;
+	  leaf.style.left = Math.random() * 100 + "vw";
+	  leaf.style.animationDuration = (10 + Math.random() * 5) + "s";
+	  leaf.style.animationDelay = Math.random() * 3 + "s";
+	  leaf.style.zIndex = 1;
+
+	  document.getElementById("leaves-container").appendChild(leaf);
+
+	  // Remove leaf after it falls
+	  setTimeout(() => leaf.remove(), 14000);
+	}
+
+	// Spawn leaves every 500–700ms
+	setInterval(spawnLeaf, 500);
+	</script>
+
+</body>
+</html>
