@@ -3,7 +3,7 @@
 <h1 align="center">🐼 PandaMania Dashboard</h1>
 
 <p align="center">
-  Your central command for all things <strong>Panda Tools</strong> — firmware, badges, dashboards, and more.
+  Your central command for all things <strong>Panda Tools</strong> — firmware, badges, dashboards, and more. This is a unofficial tool by a community member.
 </p>
 
 <p align="center">
