@@ -142,9 +142,10 @@
 	}
 	
 	.share-icon {
-	  width: 24px;
-	  height: 24px;
-	  vertical-align: middle;
+	  width: 32px;
+	  height: 32px;
+	  object-fit: contain;
+	  border-radius: 0.5rem; /* or 0 for sharp square */
 	  filter: drop-shadow(0 0 4px #33ff9d);
 	  transition: transform 0.2s ease;
 	}
@@ -156,10 +157,10 @@
 
 	.share-buttons a,
 	.share-buttons button {
-	  background: rgba(255, 255, 255, 0.05);
-	  border: 0px solid rgba(255, 255, 255, 0.1);
-	  padding: 0.4rem 0.6rem;
-	  border-radius: 0.5rem;
+	  background: transparent;
+	  border: none;
+	  padding: 0;
+	  border-radius: 0;
 	  color: #33ff9d;
 	  text-decoration: none;
 	  cursor: pointer;
