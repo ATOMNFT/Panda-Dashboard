@@ -140,6 +140,19 @@
 	  justify-content: center;
 	  font-size: 1.25rem;
 	}
+	
+	.share-icon {
+	  width: 24px;
+	  height: 24px;
+	  vertical-align: middle;
+	  filter: drop-shadow(0 0 4px #33ff9d);
+	  transition: transform 0.2s ease;
+	}
+
+	.share-buttons a:hover .share-icon,
+	.share-buttons button:hover .share-icon {
+	  transform: scale(1.1);
+	}
 
 	.share-buttons a,
 	.share-buttons button {
@@ -263,10 +276,14 @@
 			<a href="${r.flash}" target="_blank">${r.device === 'tools' ? 'Open Tool' : 'Flash Now'}</a>
 			<a href="https://github.com/ATOMNFT/${r.repo}" target="_blank">View Repo</a>
 			${versionTag}
-			<div class="share-buttons">
-			  <a href="${tweetURL}" target="_blank" title="Share on Twitter">🐦</a>
-			  <button onclick="copyToClipboard('${r.flash}')" title="Copy Link to Clipboard">📋</button>
-			</div>
+		<div class="share-buttons">
+		  <a href="${tweetURL}" target="_blank" title="Share on Twitter">
+			<img src="Icons/x.png" alt="Twitter" class="share-icon" />
+		  </a>
+		  <button onclick="copyToClipboard('${r.flash}')" title="Copy Link to Clipboard">
+			<img src="Icons/clipboard.png" alt="Copy Link" class="share-icon" />
+		  </button>
+		</div>
 		  </div>`;
 	  }
 	}
