@@ -11,7 +11,7 @@
     <img src="https://img.shields.io/badge/Live-Dashboard-33ff9d?style=for-the-badge&logo=githubpages&logoColor=white" alt="Live Site" />
   </a>
   <a href="https://github.com/ATOMNFT/Panda-Dashboard/blob/main/LICENSE">
-    <img src="https://img.shields.io/github/license/ATOMNFT/PandaMania-Dashboard?style=for-the-badge&color=purple" alt="License Badge" />
+    <img src="https://img.shields.io/github/license/ATOMNFT/Panda-Dashboard?style=for-the-badge&color=purple" alt="License Badge" />
   </a>
   <img src="https://img.shields.io/badge/Built%20with-%F0%9F%90%BC%20Love%20%26%20Neon-ff69b4?style=for-the-badge" alt="Made with love" />
 </p>
