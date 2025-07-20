@@ -1,10 +1,25 @@
 ![Header](Images/mainheader.png)
 
-# 🐼 PandaMania Dashboard
+<h1 align="center">🐼 PandaMania Dashboard</h1>
 
-Welcome to the **PandaMania Dashboard** — your central hub for all tools, utilities, and firmware experiences made for the PandaMania community.
+<p align="center">
+  Your central command for all things <strong>Panda Tools</strong> — firmware, badges, dashboards, and more.
+</p>
 
-🌿 Built with neon flair, panda love, and community empowerment in mind.
+<p align="center">
+  <a href="https://atomnft.github.io/PandaMania-Dashboard">
+    <img src="https://img.shields.io/badge/Live-Dashboard-33ff9d?style=for-the-badge&logo=githubpages&logoColor=white" alt="Live Site" />
+  </a>
+  <a href="https://github.com/ATOMNFT/PandaMania-Dashboard/blob/main/LICENSE">
+    <img src="https://img.shields.io/github/license/ATOMNFT/PandaMania-Dashboard?style=for-the-badge&color=purple" alt="License Badge" />
+  </a>
+  <img src="https://img.shields.io/badge/Built%20with-%F0%9F%90%BC%20Love%20%26%20Neon-ff69b4?style=for-the-badge" alt="Made with love" />
+</p>
+
+---
+
+Welcome to the **PandaMania Dashboard** — your central hub for all tools, utilities, and firmware experiences made for the PandaMania community. No install. No setup. Just panda power.
+
 
 ---
 
